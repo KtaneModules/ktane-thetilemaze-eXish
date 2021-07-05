@@ -711,7 +711,7 @@ public class TheTileMazeScript : MonoBehaviour {
         {
             if (i == 1 || i == 3 || i == 5)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     if (tileTypes[7 * i + j].EqualsAny(0, 3, 4, 5, 6) && tileTypes[7 * i + j + 1].EqualsAny(0, 3, 4, 5, 6) && tileTypes[7 * i + j + 2].EqualsAny(0, 3, 4, 5, 6) && tileTypes[7 * i + j + 3].EqualsAny(0, 3, 4, 5, 6))
                         return true;
@@ -722,7 +722,7 @@ public class TheTileMazeScript : MonoBehaviour {
         {
             if (i == 1 || i == 3 || i == 5)
             {
-                for (int j = 0; j < 3; j++)
+                for (int j = 0; j < 4; j++)
                 {
                     if (tileTypes[i + (7 * j)].EqualsAny(0, 3, 4, 5, 6) && tileTypes[i + (7 * (j + 1))].EqualsAny(0, 3, 4, 5, 6) && tileTypes[i + (7 * (j + 2))].EqualsAny(0, 3, 4, 5, 6) && tileTypes[i + (7 * (j + 3))].EqualsAny(0, 3, 4, 5, 6))
                         return true;
