@@ -27,11 +27,11 @@ MonoBehaviour:
     PDF: https://ktane.timwi.de/PDF/The%20Tile%20Maze.pdf
 
 
-    The Tile Maze (theTileMazeModule) v1.0.3
+    The Tile Maze (theTileMazeModule) v1.0.4
 
     Module and Concept by eXish
 
     Twitch Plays supported'
-  version: 1.0.3
+  version: 1.0.4
   outputFolder: build
   previewImage: {fileID: 2800000, guid: 861a63f2ba17cda47af7436d9b1516d4, type: 3}
