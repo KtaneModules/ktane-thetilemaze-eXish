@@ -5,7 +5,8 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System;
 
-public class TheTileMazeScript : MonoBehaviour {
+public class TheTileMazeScript : MonoBehaviour
+{
 
     public KMAudio audio;
     public KMBombInfo bomb;
@@ -21,13 +22,13 @@ public class TheTileMazeScript : MonoBehaviour {
     public MeshRenderer[] cards;
     public Material cardFlipMat;
 
-    private Vector3[] startPositions = { new Vector3(-0.0795f, 0.023f, 0.0496f), new Vector3(0.0455f, 0.023f, 0.0496f), new Vector3(-0.0795f, 0.023f, -0.0756f), new Vector3(0.0455f, 0.023f, -0.0756f) };
-    private string[] colorNames = { "Red", "Blue", "Yellow", "Green" };
-    private string[] cornerTilePos = { "Top Left", "Top Right", "Bottom Left", "Bottom Right" };
-    private string[] moveDirections = { "left", "right", "up", "down" };
-    private string[] coordsFirstList = { "A", "B", "C", "D", "E", "F", "G" };
-    private string[] coordsSecondList = { "1", "2", "3", "4", "5", "6", "7" };
-    private int[] tileTypes =
+    private static readonly Vector3[] startPositions = { new Vector3(-0.0795f, 0.023f, 0.0496f), new Vector3(0.0455f, 0.023f, 0.0496f), new Vector3(-0.0795f, 0.023f, -0.0756f), new Vector3(0.0455f, 0.023f, -0.0756f) };
+    private static readonly string[] colorNames = { "Red", "Blue", "Yellow", "Green" };
+    private static readonly string[] cornerTilePos = { "Top Left", "Top Right", "Bottom Left", "Bottom Right" };
+    private static readonly string[] moveDirections = { "left", "right", "up", "down" };
+    private static readonly string[] coordsFirstList = { "A", "B", "C", "D", "E", "F", "G" };
+    private static readonly string[] coordsSecondList = { "1", "2", "3", "4", "5", "6", "7" };
+    private readonly int[] tileTypes =
     {
         -2,  -1,  2,  -1,  2,  -1, -2,
         -1,  -1, -1,  -1, -1,  -1, -1,
@@ -37,7 +38,7 @@ public class TheTileMazeScript : MonoBehaviour {
         -1,  -1, -1,  -1, -1,  -1, -1,
         -2,  -1,  2,  -1,  2,  -1, -2
     };
-    private int[] tileRotations =
+    private readonly int[] tileRotations =
     {
          3,  -1,  2,  -1,  2,  -1,  0,
         -1,  -1, -1,  -1, -1,  -1, -1,
@@ -47,7 +48,7 @@ public class TheTileMazeScript : MonoBehaviour {
         -1,  -1, -1,  -1, -1,  -1, -1,
          2,  -1,  0,  -1,  0,  -1,  1
     };
-    private int[] tileNumbers =
+    private readonly int[] tileNumbers =
     {
         -1,  -1, -1,  -1, -1,  -1, -1,
         -1,  -1, -1,  -1, -1,  -1, -1,
@@ -57,8 +58,8 @@ public class TheTileMazeScript : MonoBehaviour {
         -1,  -1, -1,  -1, -1,  -1, -1,
         -1,  -1, -1,  -1, -1,  -1, -1
     };
-    private int[] startTilePos = { 0, 6, 42, 48 };
-    private int[] cardNumbersGenerated = { -1, -1, -1 };
+    private static readonly int[] startTilePos = { 0, 6, 42, 48 };
+    private readonly int[] cardNumbersGenerated = { -1, -1, -1 };
     private int extraTileType = -1;
     private int extraTileRotation = -1;
     private int extraTileNumber = -1;
@@ -85,7 +86,8 @@ public class TheTileMazeScript : MonoBehaviour {
         }
     }
 
-    void Start () {
+    void Start()
+    {
         List<int> startTiles = new List<int> { 3, 4, 5, 6 };
         startTiles = startTiles.Shuffle();
         for (int i = 0; i < 4; i++)
@@ -666,7 +668,7 @@ public class TheTileMazeScript : MonoBehaviour {
             }
         }
     }
-    
+
     string GetTileLogChar(int tileIndex)
     {
         if (tileIndex != 49)
@@ -882,9 +884,9 @@ public class TheTileMazeScript : MonoBehaviour {
     }
 
     //twitch plays
-    #pragma warning disable 414
+#pragma warning disable 414
     private readonly string TwitchHelpMessage = @"!{0} start <tl/tr/bl/br> [Presses the tile in the top left, top right, bottom left, or bottom right] | !{0} <ccw/cw> [Presses the counter-clockwise or clockwise button] | !{0} <l/r/u/d> [Presses the left, right, up, or down arrow button] | !{0} <coord> [Slides in a tile at the specified coordinate where A1 is top left and G7 is bottom right] | The previous three commands are chainable with spaces";
-    #pragma warning restore 414
+#pragma warning restore 414
     IEnumerator ProcessTwitchCommand(string command)
     {
         string[] parameters = command.Split(' ');
