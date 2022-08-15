@@ -5162,7 +5162,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: af42ba2e41b894645b6f5c5f23e34a2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5332,7 +5332,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: 851e80d99d5f5a7438f009b865e49036, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6012,7 +6012,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: 116a6909b4b75d74a9d878d381cfc93b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6080,7 +6080,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: 5792f23c2eb709548a5930c72d1eb408, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7100,7 +7100,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: dea7f96e84ede8c44beac98798468b3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7236,7 +7236,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: 2d4c16e5e6621d94ba6ca8a14466335b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8392,7 +8392,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: da2b6cb3ad18ad64f8dcaceebc404928, type: 2}
+  - {fileID: 2100000, guid: 9e9d24e3f26552c4692839768a9ecb6b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10633,32 +10633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf052b07f68f6c546a1996605b6a64d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 114335410585506892}
-  bomb: {fileID: 114375059033245494}
-  buttons:
-  - {fileID: 114702145331693976}
-  - {fileID: 114743965475820694}
-  - {fileID: 114571497982674446}
-  - {fileID: 114193827152425058}
-  - {fileID: 114644692339465938}
-  - {fileID: 114955106504648912}
-  - {fileID: 114636331010877118}
-  - {fileID: 114003257346090992}
-  - {fileID: 114521202854818662}
-  - {fileID: 114787807823812140}
-  - {fileID: 114929308020874216}
-  - {fileID: 114055569334237484}
-  - {fileID: 114233588724157896}
-  - {fileID: 114865824683858150}
-  - {fileID: 114341333086385366}
-  - {fileID: 114350105476924858}
-  - {fileID: 114486531247564094}
-  - {fileID: 114122979276512512}
-  - {fileID: 114777882457283238}
-  - {fileID: 114883481544159694}
-  - {fileID: 114299914614638654}
-  - {fileID: 114412122467543560}
-  tiles:
+  Audio: {fileID: 114335410585506892}
+  Bomb: {fileID: 114375059033245494}
+  Module: {fileID: 114235369766892872}
+  Tiles:
   - {fileID: 1197708614691324}
   - {fileID: 1816718173089460}
   - {fileID: 1089527692733498}
@@ -10708,20 +10686,7 @@ MonoBehaviour:
   - {fileID: 1273598541375438}
   - {fileID: 1789785746670726}
   - {fileID: 1883952943360870}
-  extraTile: {fileID: 1912469776217528}
-  tileMats:
-  - {fileID: 2100000, guid: 9e9d24e3f26552c4692839768a9ecb6b, type: 2}
-  - {fileID: 2100000, guid: 2d4c16e5e6621d94ba6ca8a14466335b, type: 2}
-  - {fileID: 2100000, guid: 116a6909b4b75d74a9d878d381cfc93b, type: 2}
-  - {fileID: 2100000, guid: 851e80d99d5f5a7438f009b865e49036, type: 2}
-  - {fileID: 2100000, guid: dea7f96e84ede8c44beac98798468b3c, type: 2}
-  - {fileID: 2100000, guid: 5792f23c2eb709548a5930c72d1eb408, type: 2}
-  - {fileID: 2100000, guid: af42ba2e41b894645b6f5c5f23e34a2d, type: 2}
-  cardNumbersText:
-  - {fileID: 102081750701624174}
-  - {fileID: 102437052467577632}
-  - {fileID: 102721925683956814}
-  tileNumbersText:
+  TileNumbersText:
   - {fileID: 0}
   - {fileID: 102100243392199034}
   - {fileID: 102244835388870340}
@@ -10771,17 +10736,59 @@ MonoBehaviour:
   - {fileID: 102092288936124600}
   - {fileID: 102813666294613950}
   - {fileID: 0}
-  extraTileText: {fileID: 102188769712027358}
-  playerMats:
+  ExtraTile: {fileID: 1912469776217528}
+  ExtraTileText: {fileID: 102188769712027358}
+  Cards:
+  - {fileID: 23500652063027630}
+  - {fileID: 23499673679443860}
+  - {fileID: 23116254972817422}
+  CardNumbersText:
+  - {fileID: 102081750701624174}
+  - {fileID: 102437052467577632}
+  - {fileID: 102721925683956814}
+  Player: {fileID: 1715637628896414}
+  TileMaterials:
+  - {fileID: 2100000, guid: 9e9d24e3f26552c4692839768a9ecb6b, type: 2}
+  - {fileID: 2100000, guid: 116a6909b4b75d74a9d878d381cfc93b, type: 2}
+  - {fileID: 2100000, guid: 2d4c16e5e6621d94ba6ca8a14466335b, type: 2}
+  ColorTileMaterials:
+  - {fileID: 2100000, guid: 851e80d99d5f5a7438f009b865e49036, type: 2}
+  - {fileID: 2100000, guid: dea7f96e84ede8c44beac98798468b3c, type: 2}
+  - {fileID: 2100000, guid: 5792f23c2eb709548a5930c72d1eb408, type: 2}
+  - {fileID: 2100000, guid: af42ba2e41b894645b6f5c5f23e34a2d, type: 2}
+  PlayerMaterials:
   - {fileID: 2100000, guid: 80c5684d94bb04f4a8dda59abd330ecf, type: 2}
   - {fileID: 2100000, guid: aeb84f23b725acb438b0d3c8085ccd7b, type: 2}
   - {fileID: 2100000, guid: e8fc6eb0177aba44aa7570bfddaa9144, type: 2}
   - {fileID: 2100000, guid: ff112394da6e47e4b9156447436f59be, type: 2}
-  player: {fileID: 1715637628896414}
-  cards:
-  - {fileID: 23499673679443860}
-  - {fileID: 23116254972817422}
-  cardFlipMat: {fileID: 2100000, guid: 51305c592b325ec4cbda4c16c6156477, type: 2}
+  CardFaceDownMaterial: {fileID: 2100000, guid: 70af82272349145438e8296d68be7dcb,
+    type: 2}
+  CardFaceUpMaterial: {fileID: 2100000, guid: 51305c592b325ec4cbda4c16c6156477, type: 2}
+  ArrowButtons:
+  - {fileID: 114571497982674446}
+  - {fileID: 114743965475820694}
+  - {fileID: 114193827152425058}
+  - {fileID: 114702145331693976}
+  CornerButtons:
+  - {fileID: 114636331010877118}
+  - {fileID: 114003257346090992}
+  - {fileID: 114521202854818662}
+  - {fileID: 114787807823812140}
+  ShoveButtons:
+  - {fileID: 114929308020874216}
+  - {fileID: 114055569334237484}
+  - {fileID: 114233588724157896}
+  - {fileID: 114883481544159694}
+  - {fileID: 114299914614638654}
+  - {fileID: 114412122467543560}
+  - {fileID: 114350105476924858}
+  - {fileID: 114341333086385366}
+  - {fileID: 114865824683858150}
+  - {fileID: 114777882457283238}
+  - {fileID: 114122979276512512}
+  - {fileID: 114486531247564094}
+  RotateClockwiseButton: {fileID: 114955106504648912}
+  RotateCounterclockwiseButton: {fileID: 114644692339465938}
 --- !u!114 &114021011355341686
 MonoBehaviour:
   m_ObjectHideFlags: 1
