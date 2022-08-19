@@ -195,7 +195,7 @@ namespace TheTileMaze
                         newState.NumbersCollected == newState.NumbersToCollect.Length ? string.Format(" Now on to the goal position ({0}{1}).", (char) ('A' + GoalPosition % 7), 1 + GoalPosition / 7) : "");
             }
 
-            if ((setStart != null || shove != null) && Stuck())
+            if ((setStart != null || shove != null) && newState.Stuck())
                 newState.LogMessage = (newState.LogMessage == null ? "" : newState.LogMessage + " ") + "You are stuck. You may slide in a tile.";
 
             return newState;

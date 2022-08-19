@@ -71,6 +71,15 @@ public class TheTileMazeScript : MonoBehaviour
     {
         button.OnInteract += delegate
         {
+            button.AddInteractionPunch(0.75f);
+            Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, button.transform);
+            if (_moduleSolved)
+                return false;
+
+            // When waiting for the player to slide in a tile, do not strike on other actions
+            if (!_state.StartPlaced && !(action is SetStart))
+                return false;
+
             var result = _state.Perform(action);
             var valid = result as Valid;
             var strike = result as Strike;
