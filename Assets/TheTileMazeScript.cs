@@ -59,10 +59,15 @@ public class TheTileMazeScript : MonoBehaviour
         _state = GameState.GenerateInitial();
         UpdateView();
 
-        Debug.LogFormat("[The Tile Maze #{0}] Generated Maze:", _moduleId);
+        Debug.LogFormat("[The Tile Maze #{0}] Generated maze:", _moduleId);
         for (int i = 0; i < 7; i++)
             Debug.LogFormat("[The Tile Maze #{0}] {1}", _moduleId, Enumerable.Range(0, 7).Select(x => _state.Tiles[x + 7 * i].Char).Join(""));
+        Debug.LogFormat("[The Tile Maze #{0}] Tile numbers:", _moduleId);
+        for (int i = 0; i < 7; i++)
+            Debug.LogFormat("[The Tile Maze #{0}] {1}", _moduleId, Enumerable.Range(0, 7).Select(x => _state.Tiles[x + 7 * i].Number.ToString().PadLeft(1, '-')).Join(""));
         Debug.LogFormat("[The Tile Maze #{0}] Extra tile: {1}", _moduleId, _state.ExtraTile.Char);
+        Debug.LogFormat("[The Tile Maze #{0}] Extra tile number: {1}", _moduleId, _state.ExtraTile.Number.ToString().PadLeft(1, '-'));
+        Debug.LogFormat("[The Tile Maze #{0}] Colors of corner tiles in reading order: {1}", _moduleId, _state.CornerColors.Join(", "));
         Debug.LogFormat("[The Tile Maze #{0}] Player must be placed in: {1}", _moduleId, _state.RequiredStartPosition.Name);
         Debug.LogFormat("[The Tile Maze #{0}] Numbers to collect: {1}", _moduleId, _state.NumbersToCollect.Join(", "));
     }
@@ -71,6 +76,15 @@ public class TheTileMazeScript : MonoBehaviour
     {
         button.OnInteract += delegate
         {
+            button.AddInteractionPunch(0.75f);
+            Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, button.transform);
+            if (_moduleSolved)
+                return false;
+
+            // When waiting for the player to slide in a tile, do not strike on other actions
+            if (!_state.StartPlaced && !(action is SetStart))
+                return false;
+
             var result = _state.Perform(action);
             var valid = result as Valid;
             var strike = result as Strike;
