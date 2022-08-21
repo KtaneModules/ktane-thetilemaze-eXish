@@ -16,6 +16,8 @@
 
         // Straights
         NS,
-        EW
+        EW,
+        SN,     // Looks the same as NS except when a number is on it
+        WE      // Looks the same as EW except when a number is on it
     }
 }

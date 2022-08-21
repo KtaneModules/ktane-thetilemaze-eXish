@@ -112,20 +112,22 @@ namespace TheTileMaze
                 NumbersCollected = 0
             };
 
+            // All of the shovable tiles (every even row and column, plus the extra tile)
             var tiles = Enumerable.Repeat(TileShape.NE, 16).Concat(Enumerable.Repeat(TileShape.ESW, 6)).Concat(Enumerable.Repeat(TileShape.NS, 12)).ToArray().Shuffle();
-            var tileNumbers = Enumerable.Range(0, 10).Select(v => (int?) v).Concat(Enumerable.Repeat((int?) null, tiles.Length - 10)).ToArray().Shuffle();
             var tIx = 0;
 
-            for (var i = 0; i < _initialGrid.Length; i++)
-                if (_initialGrid[i] == null)
-                {
-                    gs.Tiles[i] = new Tile(tiles[tIx], tileNumbers[tIx]);
-                    tIx++;
-                }
-                else
-                    gs.Tiles[i] = new Tile(_initialGrid[i].Value, null);
+            // All tiles except the corners can potentially have numbers on them, the rest are “null” numbers
+            var tileNumbers = Enumerable.Range(0, 10).Select(v => (int?) v).Concat(Enumerable.Repeat((int?) null, 50 /* all tiles */ - 10 /* numbers */ - 4 /* corners */)).ToArray().Shuffle();
+            var tnIx = 0;
 
-            gs.ExtraTile = new Tile(tiles[tIx].Rotate(Rnd.Range(0, 4)), tileNumbers[tIx]);
+            for (var i = 0; i < _initialGrid.Length; i++)
+                gs.Tiles[i] = new Tile(
+                    // Place tiles from _initialGrid; fill the gaps with the shuffled tiles and rotate them randomly
+                    _initialGrid[i] != null ? _initialGrid[i].Value : tiles[tIx++].Rotate(Rnd.Range(0, 4)),
+                    // Place numbers anywhere except the corners
+                    SetStart.AllStarts.Any(s => s.TilePosition == i) ? null : tileNumbers[tnIx++]);
+
+            gs.ExtraTile = new Tile(tiles[tIx].Rotate(Rnd.Range(0, 4)), tileNumbers[tnIx]);
             return gs;
         }
 
