@@ -16,7 +16,7 @@ namespace TheTileMaze
 
         public Tile Rotate(int amount) { return new Tile(Shape.Rotate(amount), Number); }
 
-        public char Char { get { return "╚╔╗╝╦╣╩╠║═"[(int) Shape]; } }
+        public char Char { get { return "╚╔╗╝╦╣╩╠║═║═"[(int) Shape]; } }
 
         public bool Equals(Tile other) { return other.Shape == Shape && other.Number == Number; }
         public override int GetHashCode() { return (int) Shape * 31 + (Number ?? 10); }

@@ -7,7 +7,7 @@ namespace TheTileMaze
         public static TileShape Clockwise(this TileShape tile)
         {
             var tileInt = (int) tile;
-            return (TileShape) (tileInt < 8 ? (tileInt & ~3) | ((tileInt % 4 + 1) % 4) : tileInt ^ 1);
+            return (TileShape) ((tileInt & ~3) | ((tileInt % 4 + 1) % 4));
         }
 
         public static TileShape Rotate(this TileShape tile, int amount)
@@ -31,7 +31,9 @@ namespace TheTileMaze
             { TileShape.NEW, new[] { true, true, false, true } },
             { TileShape.NES, new[] { true, true, true, false } },
             { TileShape.NS, new[] { true, false, true, false } },
-            { TileShape.EW, new[] { false, true, false, true } }
+            { TileShape.EW, new[] { false, true, false, true } },
+            { TileShape.SN, new[] { true, false, true, false } },
+            { TileShape.WE, new[] { false, true, false, true } }
         };
 
         public static bool IsOpenAt(this TileShape tile, Direction direction) { return _tileOpen[tile][(int) direction]; }
