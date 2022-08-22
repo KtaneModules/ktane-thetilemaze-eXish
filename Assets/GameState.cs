@@ -146,13 +146,13 @@ namespace TheTileMaze
                     return this;
                 var req = RequiredStartPosition;
                 if (setStart != req)
-                    return string.Format("You tried to place the player in the {0} instead of the {1}.", setStart.Name, req.Name);
+                    return string.Format("You tried to place the token in the {0} instead of the {1}.", setStart.Name, req.Name);
                 newState = PlacePlayer(setStart);
             }
             else if (move != null)
             {
                 if (!StartPlaced)
-                    return "You tried to move, but you have not placed the player in the correct corner yet.";
+                    return "You tried to move, but you have not placed the token in the correct corner yet.";
                 if (MoveCount == 3)
                     return "You already made three moves, you have to slide in a tile now.";
                 switch (CanMoveTo(PlayerPosition, move.Direction))
@@ -169,7 +169,7 @@ namespace TheTileMaze
             else if (shove != null)
             {
                 if (!StartPlaced)
-                    return "You tried to slide in a tile, but you have not placed the player in the correct corner yet.";
+                    return "You tried to slide in a tile, but you have not placed the token in the correct corner yet.";
                 if (!Stuck())
                 {
                     if (MoveCount == 0)
@@ -192,9 +192,9 @@ namespace TheTileMaze
                 newState.NumbersCollected++;
                 newState.LogMessage = (newState.LogMessage == null ? "" : newState.LogMessage + " ") +
                     string.Format(
-                        "You collected the {0}.{1}",
+                        "You navigated to {0}.{1}",
                         newState.NumbersToCollect[newState.NumbersCollected - 1],
-                        newState.NumbersCollected == newState.NumbersToCollect.Length ? string.Format(" Now on to the goal position ({0}{1}).", (char) ('A' + GoalPosition % 7), 1 + GoalPosition / 7) : "");
+                        newState.NumbersCollected == newState.NumbersToCollect.Length ? string.Format(" Now head back to the start position ({0}{1}).", (char) ('A' + GoalPosition % 7), 1 + GoalPosition / 7) : "");
             }
 
             if ((setStart != null || shove != null) && newState.Stuck())
@@ -212,6 +212,7 @@ namespace TheTileMaze
         {
             var newState = Clone();
             newState.ExtraTile = ExtraTile.Rotate(clockwise ? 1 : 3);
+            newState.LogMessage = string.Format("Rotated extra tile {0}. Extra tile is now {1}.", clockwise ? "clockwise" : "counter-clockwise" , newState.ExtraTile.Char);
             return newState;
         }
 
@@ -250,7 +251,7 @@ namespace TheTileMaze
             newState.MoveCount = 0;
             newState.PlayerColor = CornerColors[Array.IndexOf(SetStart.AllStarts, setStart)];
             newState.StartPlaced = true;
-            newState.LogMessage = "Player placed correctly.";
+            newState.LogMessage = "Token placed correctly.";
             return newState;
         }
 
@@ -317,7 +318,7 @@ namespace TheTileMaze
             newState.LogMessage = string.Format("Shoved {0} {1}. Extra tile is now {3}.{2}",
                 shove.Direction == Direction.Up || shove.Direction == Direction.Down ? "column " + (char) ('A' + shove.RowCol) : "row " + (1 + shove.RowCol),
                 shove.Direction.ToString().ToLowerInvariant(),
-                newState.PlayerPosition != oldPlayerPosition ? string.Format(" Player is now at {0}{1}", (char) ('A' + newState.PlayerPosition % 7), 1 + newState.PlayerPosition / 7) : "",
+                newState.PlayerPosition != oldPlayerPosition ? string.Format(" Token is now at {0}{1}.", (char) ('A' + newState.PlayerPosition % 7), 1 + newState.PlayerPosition / 7) : "",
                 newState.ExtraTile.Char);
 
             return newState;

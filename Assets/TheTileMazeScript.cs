@@ -68,22 +68,30 @@ public class TheTileMazeScript : MonoBehaviour
         Debug.LogFormat("[The Tile Maze #{0}] Extra tile: {1}", _moduleId, _state.ExtraTile.Char);
         Debug.LogFormat("[The Tile Maze #{0}] Extra tile number: {1}", _moduleId, _state.ExtraTile.Number.ToString().PadLeft(1, '-'));
         Debug.LogFormat("[The Tile Maze #{0}] Colors of corner tiles in reading order: {1}", _moduleId, _state.CornerColors.Join(", "));
-        Debug.LogFormat("[The Tile Maze #{0}] Player must be placed in: {1}", _moduleId, _state.RequiredStartPosition.Name);
-        Debug.LogFormat("[The Tile Maze #{0}] Numbers to collect: {1}", _moduleId, _state.NumbersToCollect.Join(", "));
+        Debug.LogFormat("[The Tile Maze #{0}] Token must be placed on: {1}", _moduleId, _state.RequiredStartPosition.Name);
+        Debug.LogFormat("[The Tile Maze #{0}] Card numbers to navigate to: {1}", _moduleId, _state.NumbersToCollect.Join(", "));
     }
 
     private void SetButtonHandler(KMSelectable button, GameAction action)
     {
         button.OnInteract += delegate
         {
-            button.AddInteractionPunch(0.75f);
-            Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, button.transform);
             if (_moduleSolved)
                 return false;
-
-            // When waiting for the player to slide in a tile, do not strike on other actions
-            if (!_state.StartPlaced && !(action is SetStart))
+            // When waiting for the player to place their token, prevent other strikable actions
+            if (!_state.StartPlaced && (action is Move || action is Shove))
                 return false;
+            // Prevent the player from being able to place their token again
+            if (_state.StartPlaced && action is SetStart)
+                return false;
+
+            if (action is Move || action is Rotate)
+            {
+                button.AddInteractionPunch(0.75f);
+                Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.ButtonPress, button.transform);
+            }
+            if (action is Shove)
+                Audio.PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, button.transform);
 
             var result = _state.Perform(action);
             var valid = result as Valid;
@@ -91,6 +99,8 @@ public class TheTileMazeScript : MonoBehaviour
 
             if (valid != null)
             {
+                if (action is SetStart)
+                    Audio.PlaySoundAtTransform("playerPlace", button.transform);
                 _state = valid.NewState;
                 if (valid.NewState.LogMessage != null)
                     Debug.LogFormat("[The Tile Maze #{0}] {1}", _moduleId, valid.NewState.LogMessage);
